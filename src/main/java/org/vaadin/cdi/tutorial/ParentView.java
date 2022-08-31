@@ -16,6 +16,8 @@
 package org.vaadin.cdi.tutorial;
 
 import com.vaadin.cdi.annotation.RouteScopeOwner;
+import com.vaadin.cdi.annotation.RouteScoped;
+import com.vaadin.cdi.annotation.UIScoped;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.UI;
@@ -29,8 +31,7 @@ import com.vaadin.flow.router.RouterLink;
 
 import javax.inject.Inject;
 
-@Route("")
-@RoutePrefix("view")
+@UIScoped
 public class ParentView extends Div implements RouterLayout {
 
     private final RouteGreeter routeGreeter;
@@ -71,7 +72,7 @@ public class ParentView extends Div implements RouterLayout {
         container.removeAll();
         if (content != null) {
             link.setText("show parent view");
-            link.setRoute(UI.getCurrent().getRouter(), ParentView.class);
+            link.setRoute(UI.getCurrent().getRouter(), RootComponent.class);
             container.getElement().appendChild(content.getElement());
         } else {
             link.setText("show child view");

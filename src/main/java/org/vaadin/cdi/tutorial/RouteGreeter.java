@@ -2,6 +2,7 @@ package org.vaadin.cdi.tutorial;
 
 import com.vaadin.cdi.annotation.NormalRouteScoped;
 import com.vaadin.cdi.annotation.RouteScopeOwner;
+import com.vaadin.cdi.annotation.RouteScoped;
 
 import java.io.Serializable;
 

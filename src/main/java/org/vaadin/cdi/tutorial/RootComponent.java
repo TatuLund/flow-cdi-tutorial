@@ -15,6 +15,9 @@
  */
 package org.vaadin.cdi.tutorial;
 
+
+import com.vaadin.cdi.annotation.RouteScopeOwner;
+import com.vaadin.cdi.annotation.RouteScoped;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
@@ -22,18 +25,22 @@ import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.i18n.LocaleChangeObserver;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.router.RouterLink;
 
 import javax.inject.Inject;
 import java.util.Locale;
 
-@Route("")
+@RouteScoped
+@RouteScopeOwner(ParentView.class)
+@RouteAlias("")
+@Route(value = "view", layout = ParentView.class)
 public class RootComponent extends Div implements LocaleChangeObserver {
 
     private RouterLink link;
 
     @Inject
-    public RootComponent(UiGreeter uiGreeter, ExampleTemplate template) {
+    public RootComponent(UiGreeter uiGreeter, @RouteScopeOwner(ParentView.class) ExampleTemplate template) {
         Label greeting = new Label(uiGreeter.sayHello());
         Style greetingStyle = greeting.getElement().getStyle();
         greetingStyle.set("display", "block");
@@ -44,7 +51,7 @@ public class RootComponent extends Div implements LocaleChangeObserver {
 
         link = new RouterLink(
                 getTranslation("root.navigate_to_component"),
-                ParentView.class);
+                ChildView.class);
 
         Style linkStyle = link.getStyle();
         linkStyle.set("display", "block");

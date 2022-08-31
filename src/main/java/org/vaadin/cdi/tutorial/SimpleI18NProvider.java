@@ -16,6 +16,7 @@
 package org.vaadin.cdi.tutorial;
 
 import com.vaadin.cdi.annotation.VaadinServiceEnabled;
+import com.vaadin.cdi.annotation.VaadinServiceScoped;
 import com.vaadin.flow.i18n.I18NProvider;
 
 import java.util.Arrays;
@@ -26,6 +27,7 @@ import java.util.Locale;
 /**
  * Simple implementation of {@link I18NProvider}.
  */
+@VaadinServiceScoped
 @VaadinServiceEnabled
 public class SimpleI18NProvider implements I18NProvider {
 
@@ -48,5 +50,4 @@ public class SimpleI18NProvider implements I18NProvider {
         }
         return null;
     }
-
 }

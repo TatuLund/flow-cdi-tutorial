@@ -1,11 +1,14 @@
 package org.vaadin.cdi.tutorial;
 
 import com.vaadin.cdi.annotation.RouteScopeOwner;
+import com.vaadin.cdi.annotation.RouteScoped;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.router.Route;
 
 import javax.inject.Inject;
 
+@RouteScoped
+@RouteScopeOwner(ParentView.class)
 @Route(value = "child", layout = ParentView.class)
 public class ChildView extends Label {
 

@@ -15,9 +15,10 @@
  */
 package org.vaadin.cdi.tutorial;
 
-import com.vaadin.cdi.annotation.NormalUIScoped;
-
 import java.io.Serializable;
+
+import com.vaadin.cdi.annotation.NormalUIScoped;
+import com.vaadin.cdi.annotation.UIScoped;
 
 @NormalUIScoped
 public class UiGreeter implements Serializable {

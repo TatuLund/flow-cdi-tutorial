@@ -15,6 +15,9 @@
  */
 package org.vaadin.cdi.tutorial;
 
+import com.vaadin.cdi.annotation.NormalRouteScoped;
+import com.vaadin.cdi.annotation.RouteScopeOwner;
+import com.vaadin.cdi.annotation.RouteScoped;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
@@ -26,6 +29,8 @@ import javax.inject.Inject;
 /**
  * Simple template example.
  */
+@RouteScoped
+@RouteScopeOwner(ParentView.class)
 @Tag("example-template")
 @JsModule("./example-template.js")
 public class ExampleTemplate extends PolymerTemplate<ExampleModel> {
